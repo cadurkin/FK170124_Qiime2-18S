@@ -1,0 +1,176 @@
+Annotated code used in Qiime2 
+###Qiime2 analysis notes###
+#version qiime2-2019.7
+#########################################################
+
+##Working with FK170124 18S data from MSU sequencing facility (Traps) and MrDNA (surface seawater)
+##first import data.  Already demultiplexed and barcodes have been removed.  
+##Traps still have primers but surface do not.
+
+## All sequence data available on NCBI accession number PRJNA494700
+
+#################################
+##Import and process trap data###
+#################################
+
+qiime tools import \
+--type 'SampleData[PairedEndSequencesWithQuality]' \
+--input-path 20180411_18S_PE_rawreads/ \
+--input-format CasavaOneEightSingleLanePerSampleDirFmt \
+--output-path demux-paired-end.qza
+
+qiime demux summarize \
+--i-data demux-paired-end.qza \
+--o-visualization demux.qzv
+
+##use dada2 to quality control the paired end data
+##Trim off the primer sequences, and don't trim off any of the 3' end because high quality
+
+qiime dada2 denoise-paired \
+--i-demultiplexed-seqs demux-paired-end.qza \
+--o-representative-sequences rep-seqs.qza \
+--o-table table.qza \
+--o-denoising-stats stats.qza \
+--p-trunc-len-f 250 \
+--p-trunc-len-r 250 \
+--p-trim-left-f 20 \
+--p-trim-left-r 21
+
+qiime feature-table summarize \
+  --i-table table.qza \
+  --o-visualization table.qzv \
+  --m-sample-metadata-file metadata_FK170124.tsv
+
+qiime feature-table tabulate-seqs \
+  --i-data rep-seqs.qza \
+  --o-visualization rep-seqs.qzv
+  
+qiime metadata tabulate \
+  --m-input-file stats.qza \
+  --o-visualization stats.qzv
+
+######################################
+##Import and process Seawater data###
+#####################################
+
+qiime tools import \
+  --type EMPPairedEndSequences \
+  --input-path seawater_EMP_pairedend/ \
+  --output-path surface-paired-end-sequences.qza
+  
+qiime demux emp-paired \
+  --m-barcodes-file sample-metadata.tsv \
+  --m-barcodes-column BarcodeSequence \
+  --p-no-golay-error-correction \
+  --i-seqs surface-paired-end-sequences.qza \
+  --o-per-sample-sequences surface_demux.qza \
+  --o-error-correction-details surface_demux-details.qza
+
+qiime demux summarize \
+  --i-data surface_demux.qza \
+  --o-visualization surface_demux.qzv
+  
+
+###Dada2 processing of surface seawater sequences##
+###primer has already been removed, trimming lower quality 3' ends to 260##
+
+qiime dada2 denoise-paired \
+--i-demultiplexed-seqs surface_demux.qza \
+--o-representative-sequences surface_rep-seqs.qza \
+--o-table surface_table.qza \
+--o-denoising-stats surface_stats.qza \
+--p-trunc-len-f 260 \
+--p-trunc-len-r 260 \
+
+qiime metadata tabulate \
+  --m-input-file stats.qza \
+  --o-visualization stats.qzv
+
+###############################################
+###Combine data from multiple sequencing runs##
+###############################################
+
+qiime feature-table merge \
+  --i-tables surface_table.qza  \
+  --i-tables table.qza \
+  --o-merged-table Traps_CTD_table.qza
+
+qiime feature-table merge-seqs \
+  --i-data surface_rep-seqs.qza \
+  --i-data rep-seqs.qza  \
+  --o-merged-data Traps_CTD_rep-seqs.qza 
+
+qiime feature-table tabulate-seqs \
+  --i-data Traps_CTD_rep-seqs.qza \
+  --o-visualization Traps_CTD_rep-seqs.qzv
+
+qiime tools extract \
+  --input-path Traps_CTD_table.qza \
+  --output-path Traps_CTD_Feature_table.qza
+
+biom convert -i feature-table.biom -o Traps_CTD_feature_table --to-tsv
+
+#########################################
+#Training PR2 database used to classify 18S rRNA sequences
+#Website for PR2 database (v 4.12.0, downloaded 01/24/2020):  #https://github.com/pr2database/pr2database/releases
+
+qiime tools import \
+  --type 'FeatureData[Sequence]' \
+  --input-path pr2_version_4.12.0_18S_mothur.fasta \
+  --output-path pr2_version_4.12.0_18S_mothur.qza
+
+qiime tools import \
+  --type 'FeatureData[Taxonomy]' \
+  --input-format HeaderlessTSVTaxonomyFormat \
+  --input-path pr2_version_4.12.0_18S_mothur.tax \
+  --output-path pr2-ref-taxonomy.qza
+
+qiime feature-classifier extract-reads \
+  --i-sequences pr2_version_4.12.0_18S_mothur.qza \
+  --p-f-primer CCAGCASCYGCGGTAATTCC \
+  --p-r-primer ACTTTCGTTCTTGATYRATGA \
+  --p-min-length 200 \
+  --p-max-length 500 \
+  --o-reads 18Sref-seqsP2.qza
+  
+qiime feature-classifier fit-classifier-naive-bayes \
+  --i-reference-reads 18Sref-seqsP2.qza \
+  --i-reference-taxonomy pr2-ref-taxonomy.qza \
+  --o-classifier PR2classifier.qza
+
+########################################
+####Classify 18S sequences
+qiime feature-classifier classify-sklearn \
+  --i-classifier PR2classifier.qza \
+  --i-reads Trap_CTD_rep-seqs.qza \
+  --o-classification Trap_CTD_taxonomy.qza
+
+qiime metadata tabulate \
+  --m-input-file taxonomy.qza \
+  --o-visualization taxonomy.qzv
+  
+##Rarify the count data in the feature table###
+###Rarify to 31993.  This is the sequencing depth of sample 13##
+qiime diversity core-metrics \
+	--i-table ./Traps_CTD_table.qza \
+	--p-sampling-depth 31993 \
+	--m-metadata-file ./metadata_FK170124_Traps_CTD.tsv \
+	--o-rarefied-table Traps_CTD_31993_rarified_feature_table.qza \
+	--o-bray-curtis-distance-matrix Traps_CTD_31993_BC_matrix_rarified_data.qza \
+	--o-observed-otus-vector Traps_CTD_31993_obs_OTUS.qza \
+	--o-shannon-vector Traps_CTD_31993_shannon_vector.qza \
+	--o-evenness-vector Traps_CTD_31993_evenness_vectore.qza \
+	--o-jaccard-distance-matrix Traps_CTD_31993_jaccard_matrix.qza \
+	--o-jaccard-pcoa-results Traps_CTD_31993_jaccard_pcoa.qza \
+	--o-bray-curtis-pcoa-results Traps_CTD_31993_BC_pcoa.qza \
+	--o-jaccard-emperor Traps_CTD_31993_jaccard_emperor.qza \
+	--o-bray-curtis-emperor Traps_CTD_31993_BC_emperor.qza \
+	--output-dir ./beta_diversity_stats3/
+
+##Export rarified otu table to analyze in python/jupyter notebook
+
+qiime tools extract \
+  --input-path Traps_CTD_31993_rarified_feature_table.qza \
+  --output-path ../FK170124_18s_Trap_CTD_31993_rarified_FeatureTable
+
+biom convert -i feature-table.biom -o FK170124_18S_Traps_CTD_31993_rarified_feature_table --to-tsv
