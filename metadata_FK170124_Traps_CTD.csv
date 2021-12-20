@@ -1,0 +1,119 @@
+Sample,Sample_code,Sample_fraction,ParticleType,recovery_Year,recovery_Month,recovery_Day,Trap,Station,Sample_Time,Sample_type
+T1,T1,na,bulk_fresh,2017,2,8,WW2,2,0,Trap
+T2,T2,na,bulk_RNAlater,2017,2,8,WW2,2,0,Trap
+T4,T4,na,bulk_fresh,2017,2,13,WW3,3,0,Trap
+T5,T5,na,bulk_RNAlater,2017,2,13,WW3,3,0,Trap
+T7,T7,na,bulk_fresh,2017,2,14,WW4,3,0,Trap
+T8,T8,na,bulk_RNAlater,2017,2,14,WW4,3,0,Trap
+P1,P1,na,aggregate,2017,2,2,NBST1,1,0,Trap
+P2,P2,na,dense_detritus,2017,2,2,NBST1,1,0,Trap
+P3,P3,na,aggregate,2017,2,2,NBST1,1,0,Trap
+P4,P4,na,dense_detritus,2017,2,2,NBST1,1,0,Trap
+P5,P5,na,long_fecal_pellet,2017,2,2,NBST1,1,0,Trap
+P6,P6,na,dense_detritus,2017,2,2,NBST1,1,0,Trap
+P7,P7,na,long_fecal_pellet,2017,2,2,NBST1,1,0,Trap
+P8,P8,na,dense_detritus,2017,2,2,NBST1,1,0,Trap
+P9,P9,na,dense_detritus,2017,2,2,NBST1,1,0,Trap
+P10,P10,na,dense_detritus,2017,2,2,NBST1,1,0,Trap
+P12,P12,na,dense_detritus,2017,2,2,NBST1,1,0,Trap
+P13,P13,na,aggregate,2017,2,2,NBST1,1,0,Trap
+P15,P15,na,large_loose_pellet,2017,2,2,WW2,2,0,Trap
+P16,P16,na,long_fecal_pellet,2017,2,8,WW2,2,0,Trap
+P18,P18,na,dense_detritus,2017,2,8,WW2,2,0,Trap
+P23,P23,na,dense_detritus,2017,2,8,WW2,2,0,Trap
+P24,P24,na,long_fecal_pellet,2017,2,8,WW2,2,0,Trap
+P25,P25,na,dense_detritus,2017,2,8,WW2,2,0,Trap
+P27,P27,na,large_loose_pellet,2017,2,13,WW3,3,0,Trap
+P28,P28,na,long_fecal_pellet,2017,2,13,WW3,3,0,Trap
+P29,P29,na,large_loose_pellet,2017,2,13,WW3,3,0,Trap
+P30,P30,na,large_loose_pellet,2017,2,13,WW3,3,0,Trap
+P31,P31,na,large_loose_pellet,2017,2,13,WW3,3,0,Trap
+P32,P32,na,aggregate,2017,2,13,WW3,3,0,Trap
+P33,P33,na,dense_detritus,2017,2,13,WW3,3,0,Trap
+P34,P34,na,aggregate,2017,2,13,WW3,3,0,Trap
+P35,P35,na,dense_detritus,2017,2,13,WW3,3,0,Trap
+P36,P36,na,dense_detritus,2017,2,13,WW3,3,0,Trap
+P37,P37,na,aggregate,2017,2,13,WW3,3,0,Trap
+P38,P38,na,aggregate,2017,2,13,WW3,3,0,Trap
+P39,P39,na,aggregate,2017,2,13,WW3,3,0,Trap
+P40,P40,na,aggregate,2017,2,13,WW3,3,0,Trap
+P41,P41,na,aggregate,2017,2,13,WW3,3,0,Trap
+P42,P42,na,long_fecal_pellet,2017,2,14,WW4,3,0,Trap
+P43,P43,na,large_loose_pellet,2017,2,14,WW4,3,0,Trap
+P44,P44,na,long_fecal_pellet,2017,2,14,WW4,3,0,Trap
+P45,P45,na,large_loose_pellet,2017,2,14,WW4,3,0,Trap
+P46,P46,na,large_loose_pellet,2017,2,14,WW4,3,0,Trap
+P47,P47,na,aggregate,2017,2,14,WW4,3,0,Trap
+P48,P48,na,aggregate,2017,2,14,WW4,3,0,Trap
+P49,P49,na,aggregate,2017,2,14,WW4,3,0,Trap
+P50,P50,na,aggregate,2017,2,14,WW4,3,0,Trap
+P51,P51,na,aggregate,2017,2,14,WW4,3,0,Trap
+P52,P52,na,dense_detritus,2017,2,14,WW4,3,0,Trap
+P53,P53,na,dense_detritus,2017,2,14,WW4,3,0,Trap
+P54,P54,na,dense_detritus,2017,2,14,WW4,3,0,Trap
+P55,P55,na,dense_detritus,2017,2,14,WW4,3,0,Trap
+P56,P56,na,dense_detritus,2017,2,14,WW4,3,0,Trap
+P57,P57,na,long_fecal_pellet,2017,2,13,WW3,3,2,Trap
+P58,P58,na,large_loose_pellet,2017,2,13,WW3,3,2,Trap
+P59,P59,na,long_fecal_pellet,2017,2,13,WW3,3,2,Trap
+P60,P60,na,large_loose_pellet,2017,2,13,WW3,3,2,Trap
+P61,P61,na,large_loose_pellet,2017,2,13,WW3,3,2,Trap
+P62,P62,na,aggregate,2017,2,13,WW3,3,2,Trap
+P63,P63,na,aggregate,2017,2,13,WW3,3,2,Trap
+P64,P64,na,aggregate,2017,2,13,WW3,3,2,Trap
+P65,P65,na,aggregate,2017,2,13,WW3,3,2,Trap
+P66,P66,na,dense_detritus,2017,2,13,WW3,3,2,Trap
+P67,P67,na,dense_detritus,2017,2,13,WW3,3,2,Trap
+P68,P68,na,large_loose_pellet,2017,2,13,WW3,3,2,Trap
+P69,P69,na,dense_detritus,2017,2,13,WW3,3,2,Trap
+P70,P70,na,aggregate,2017,2,13,WW3,3,2,Trap
+P71,P71,na,dense_detritus,2017,2,13,WW3,3,2,Trap
+P72,P72,na,large_loose_pellet,2017,2,14,WW4,3,1,Trap
+P73,P73,na,large_loose_pellet,2017,2,14,WW4,3,1,Trap
+P74,P74,na,large_loose_pellet,2017,2,14,WW4,3,1,Trap
+P75,P75,na,large_loose_pellet,2017,2,14,WW4,3,1,Trap
+P76,P76,na,large_loose_pellet,2017,2,14,WW4,3,1,Trap
+P77,P77,na,dense_detritus,2017,2,14,WW4,3,1,Trap
+P78,P78,na,dense_detritus,2017,2,14,WW4,3,1,Trap
+P79,P79,na,aggregate,2017,2,14,WW4,3,1,Trap
+P80,P80,na,aggregate,2017,2,14,WW4,3,1,Trap
+P81,P81,na,aggregate,2017,2,14,WW4,3,1,Trap
+P82,P82,na,dense_detritus,2017,2,14,WW4,3,1,Trap
+P83,P83,na,dense_detritus,2017,2,14,WW4,3,1,Trap
+1,CTD4_0m,0.2 µm,plankton,2017,2,na,na,1,0,Seawater
+2,CTD4_115m,0.2 µm,plankton,2017,2,na,na,1,0,Seawater
+3,CTD4_130m,0.2 µm,plankton,2017,2,na,na,1,0,Seawater
+4,CTD8_0m,0.2 µm,plankton,2017,2,na,na,1,0,Seawater
+5,CTD8_115m,0.2 µm,plankton,2017,2,na,na,1,0,Seawater
+6,CTD8_125m,0.2 µm,plankton,2017,2,na,na,1,0,Seawater
+7,CTD14_0m,0.2 µm,plankton,2017,2,na,na,1,0,Seawater
+8,CTD14_88m,0.2 µm,plankton,2017,2,na,na,1,0,Seawater
+9,CTD14_128m,0.2 µm,plankton,2017,2,na,na,1,0,Seawater
+10,CTD18_0m,0.2 µm,plankton,2017,2,na,na,2,0,Seawater
+11,CTD18_98m,0.2 µm,plankton,2017,2,na,na,2,0,Seawater
+12,CTD18_128m,0.2 µm,plankton,2017,2,na,na,2,0,Seawater
+13,CTD22_composite,0.2 µm,plankton,2017,2,na,na,2,0,Seawater
+14,CTD29_composite,0.2 µm,plankton,2017,2,na,na,3,0,Seawater
+15,CTD33_composite,0.2 µm,plankton,2017,2,na,na,3,0,Seawater
+16,CTD33_24m,0.2 µm,plankton,2017,2,na,na,3,0,Seawater
+17,CTD33_30m,0.2 µm,plankton,2017,2,na,na,3,0,Seawater
+18,CTD43_900m,0.2 µm,plankton,2017,2,na,na,3,0,Seawater
+19,CTD43_composite,0.2 µm,plankton,2017,2,na,na,3,0,Seawater
+20,CTD43_90m,0.2 µm,plankton,2017,2,na,na,3,0,Seawater
+21,CTD4_0m,5 µm,plankton,2017,2,na,na,1,0,Seawater
+22,CTD4_115m,5 µm,plankton,2017,2,na,na,1,0,Seawater
+23,CTD4_130m,5 µm,plankton,2017,2,na,na,1,0,Seawater
+24,CTD8_0m,5 µm,plankton,2017,2,na,na,1,0,Seawater
+25,CTD8_115m,5 µm,plankton,2017,2,na,na,1,0,Seawater
+26,CTD8_125m,5 µm,plankton,2017,2,na,na,1,0,Seawater
+27,CTD14_0m,5 µm,plankton,2017,2,na,na,1,0,Seawater
+28,CTD14_88m,5 µm,plankton,2017,2,na,na,1,0,Seawater
+29,CTD14_128m,5 µm,plankton,2017,2,na,na,1,0,Seawater
+30,CTD18_0m,5 µm,plankton,2017,2,na,na,2,0,Seawater
+31,CTD18_128m,5 µm,plankton,2017,2,na,na,2,0,Seawater
+32,CTD22_composite,5 µm,plankton,2017,2,na,na,2,0,Seawater
+33,CTD29_composite,5 µm,plankton,2017,2,na,na,3,0,Seawater
+34,CTD33_composite,5 µm,plankton,2017,2,na,na,3,0,Seawater
+35,CTD33_24m,5 µm,plankton,2017,2,na,na,3,0,Seawater
+36,CTD33_30m,5 µm,plankton,2017,2,na,na,3,0,Seawater
+37,CTD43_900m,5 µm,plankton,2017,2,na,na,3,0,Seawater
